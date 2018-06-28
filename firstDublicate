@@ -1,0 +1,32 @@
+// my method
+	public static int firstDublicate(int[] a) {
+		int[] testArray = new int[a.length];
+		testArray[0] = a[0];
+		
+		for(int i = 1; i < a.length; i++) {
+			for(int k = 0; k < testArray.length; k++) {
+				if(a[i] == testArray[k]) {
+					return a[i];
+				}
+			}
+			testArray[i] = a[i];
+		}
+		return -1;
+	}
+
+	// Vadim's version
+	public static int firstDublicate2(int[] a) {
+		boolean[] testArray = new boolean[a.length];
+		for(int i = 0; i < a.length; i++) {
+			testArray[i] = false;
+		}
+		for(int i = 0; i < a.length; i++) {
+			int index = a[i]-1;
+			if(testArray[index] == false) {
+				testArray[index] = true;
+			} else {
+				return index+1;
+			} 			
+		}
+		return -1;
+	}
