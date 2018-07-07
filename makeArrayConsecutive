@@ -1,0 +1,29 @@
+
+
+public static int makeArrayConsecutive2(int[] statues) {
+    	int result = 0;
+    	boolean needNextPass = true;
+    	
+    	while(needNextPass) {
+    		needNextPass = false;
+	    	for(int i = 1; i < statues.length; i++) {
+		    	if(statues[i-1]>statues[i]) {
+		    		int num = statues[i-1];
+		    		statues[i-1] = statues[i];
+		    		statues[i]=num;
+
+		    		needNextPass = true;
+		    	}
+	    	}
+    	}
+    	
+    	int j = 0;
+
+    	for(int i = 1; i < statues.length; i++) {
+    	 j = statues[i]-statues[i-1];
+    	 if(j != 1) {
+    		 result += j-1;
+    	 }
+    	}
+    	return result;
+    }
